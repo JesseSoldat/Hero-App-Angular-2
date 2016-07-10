@@ -8,4 +8,4 @@ export class HeroService {
 	getHeroes() {
 		return Promise.resolve(HEROES);
 	}
-}
+} 
