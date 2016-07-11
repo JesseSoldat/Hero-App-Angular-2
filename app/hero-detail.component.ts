@@ -1,4 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+
+import { Component, EventEmitter, Input, OnInit, OnDestroy, Output } from '@angular/core';
+
 import { ActivatedRoute } from '@angular/router';
 
 import { Hero } from './hero';
@@ -14,8 +16,11 @@ import { HeroService } from './hero.service';
 
 export class HeroDetailComponent implements OnInit, OnDestroy {
 
-	hero: Hero;
+	@Input() hero: Hero;
+  @Output() close = new EventEmitter();
+  error: any;
   sub: any;
+  navigated = false;
 
   constructor(
     private heroService: HeroService,
