@@ -15,6 +15,7 @@ import { HeroService } from './hero.service';
 export class HeroDetailComponent implements OnInit, OnDestroy {
 
 	hero: Hero;
+  sub: any;
 
   constructor(
     private heroService: HeroService,
@@ -22,6 +23,7 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
     )  {}
 
   ngOnInit() {
+
     this.sub =
     this.route.params.subscribe(params => {
       let id = +params['id'];
