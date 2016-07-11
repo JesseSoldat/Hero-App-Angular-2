@@ -39,6 +39,19 @@ var HeroesComponent = (function () {
             this.getHeroes();
         }
     };
+    HeroesComponent.prototype.deleteHero = function (hero, event) {
+        var _this = this;
+        event.stopPropagation();
+        this.heroService
+            .delete(hero)
+            .then(function (res) {
+            _this.heroes = _this.heroes.filter(function (h) { return h !== hero; });
+            if (_this.selectedHero === hero) {
+                _this.selectedHero = null;
+            }
+        })
+            .catch(function (error) { return _this.error = error; });
+    };
     HeroesComponent = __decorate([
         core_1.Component({
             selector: 'my-heroes',
