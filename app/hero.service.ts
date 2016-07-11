@@ -40,13 +40,14 @@ export class HeroService {
 	}
 
 	
-	  save(hero: Hero): Promise<Hero> {
+	save(hero: Hero): Promise<Hero> {
 		if (hero.id) {
 			return this.put(hero);
 		}  else {
 		return this.post(hero);
+		}
 	}
-
+	
 
 	//Create a Hero POST
 	private post(hero: Hero): Promise<Hero> {

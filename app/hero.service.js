@@ -42,7 +42,6 @@ var HeroService = (function () {
         else {
             return this.post(hero);
         }
-        //Create a Hero POST
     };
     //Create a Hero POST
     HeroService.prototype.post = function (hero) {

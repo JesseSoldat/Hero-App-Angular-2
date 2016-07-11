@@ -21,16 +21,33 @@ var HeroDetailComponent = (function () {
     }
     HeroDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.sub =
-            this.route.params.subscribe(function (params) {
+        this.sub = this.route.params.subscribe(function (params) {
+            if (params['id'] !== undefined) {
                 var id = +params['id'];
-                _this.heroService.getHero(id).then(function (hero) { return _this.hero = hero; });
-            });
+                _this.navigated = true;
+                _this.heroService.getHero(id)
+                    .then(function (hero) { return _this.hero = hero; });
+            }
+            else {
+                _this.navigated = false;
+                _this.hero = new hero_1.Hero();
+            }
+        });
     };
     HeroDetailComponent.prototype.ngOnDestroy = function () {
         this.sub.unsubscribe();
     };
-    HeroDetailComponent.prototype.goBack = function () {
+    HeroDetailComponent.prototype.save = function () {
+        var _this = this;
+        this.heroService
+            .save(this.hero)
+            .then(function (hero) {
+            _this.hero = hero;
+            _this.goBack(hero);
+        });
+    };
+    HeroDetailComponent.prototype.goBack = function (savedHero) {
+        if (savedHero === void 0) { savedHero = null; }
         window.history.back();
     };
     __decorate([
