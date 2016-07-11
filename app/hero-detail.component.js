@@ -44,7 +44,8 @@ var HeroDetailComponent = (function () {
             .then(function (hero) {
             _this.hero = hero;
             _this.goBack(hero);
-        });
+        })
+            .catch(function (error) { return _this.error = error; });
     };
     HeroDetailComponent.prototype.goBack = function (savedHero) {
         if (savedHero === void 0) { savedHero = null; }

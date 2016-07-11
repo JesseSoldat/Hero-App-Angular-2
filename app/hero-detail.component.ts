@@ -55,6 +55,7 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
         this.hero = hero;
         this.goBack(hero);
       })
+      .catch(error => this.error = error);
   }
   goBack(savedHero: Hero = null) {
     this.close.emit(savedHero);
