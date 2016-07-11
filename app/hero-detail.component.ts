@@ -57,6 +57,10 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
       })
   }
   goBack(savedHero: Hero = null) {
-    window.history.back();
+    this.close.emit(savedHero);
+    if (this.navigated) {
+      window.history.back();
+
+    }
   }
 } 

@@ -48,7 +48,10 @@ var HeroDetailComponent = (function () {
     };
     HeroDetailComponent.prototype.goBack = function (savedHero) {
         if (savedHero === void 0) { savedHero = null; }
-        window.history.back();
+        this.close.emit(savedHero);
+        if (this.navigated) {
+            window.history.back();
+        }
     };
     __decorate([
         core_1.Input(), 
